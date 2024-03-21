@@ -6,18 +6,18 @@
 
 using namespace std;
 
-class Course; 
+class Course;
 
 class Teacher {
 private:
     string teacherId;
     string email;
-    list<Course*> courses; 
+    list<Course*> courses;
 
 public:
     string name;
 
-    
+
     void setId(const string& id) {
         teacherId = id;
     }
@@ -26,25 +26,22 @@ public:
         email = emailAddress;
     }
 
-   
+
     void assignCourse(Course* course) {
         courses.push_back(course);
     }
 
-    
+
     void removeCourse(Course* course) {
         courses.remove(course);
     }
 
-    
-    void viewCourses() const {
+
+    void viewCourses() {
         cout << "Courses taught by " << name << ":" << endl;
-        for (const auto& course : courses) {
+        for (Course* course : courses) {
             cout << course->getCourseName() << endl;
         }
+
     }
 };
-
-
-
-
