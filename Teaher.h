@@ -18,6 +18,7 @@ public:
     string name;
 
 
+
     void setId(const string& id) {
         teacherId = id;
     }
@@ -26,6 +27,8 @@ public:
         email = emailAddress;
     }
 
+    Teacher(){}
+    Teacher(const string& teacherName,const string& id,const string& emailAddress) : name(teacherName) , email(emailAddress) , teacherId(id){}
 
     void assignCourse(Course* course) {
         courses.push_back(course);
