@@ -2,49 +2,36 @@
 #include <iostream>
 #include <string>
 #include <list>
-#include "Course.h" 
+#include "Course.h"
 
-using namespace std;
-
-class Course;
+class Course; // Forward declaration
 
 class Teacher {
 private:
-    string teacherId;
-    string email;
-    list<Course*> courses;
+    std::string teacherId;
+    std::string email;
+    std::list<Course*> courses;
 
 public:
-    string name;
+    std::string name;
 
+    Teacher() {}
 
-
-    void setId(const string& id) {
-        teacherId = id;
-    }
-
-    void setEmail(const string& emailAddress) {
-        email = emailAddress;
-    }
-
-    Teacher(){}
-    Teacher(const string& teacherName,const string& id,const string& emailAddress) : name(teacherName) , email(emailAddress) , teacherId(id){}
+    Teacher(const std::string& teacherName, const std::string& id, const std::string& emailAddress)
+        : name(teacherName), teacherId(id), email(emailAddress) {}
 
     void assignCourse(Course* course) {
         courses.push_back(course);
     }
 
-
     void removeCourse(Course* course) {
         courses.remove(course);
     }
 
-
     void viewCourses() {
-        cout << "Courses taught by " << name << ":" << endl;
+        std::cout << "Courses taught by " << name << ":" << std::endl;
         for (Course* course : courses) {
-            cout << course->getCourseName() << endl;
+            std::cout << course->getCourseName() << std::endl;
         }
-
     }
 };
