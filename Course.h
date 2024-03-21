@@ -1,9 +1,9 @@
 #pragma once
 #include<iostream>
 #include<string>
-#include'Student.h'
+#include"Student.h"
 
-class  Student;
+//class  Student;
 
 using namespace std;
 
@@ -24,6 +24,21 @@ public:
 		studentsEnrolled.push_back(student);
 	}
 
+	void viewStudents() const {
+		cout << "Students enrolled in " << courseName << ":" << endl;
+		for (const auto& student : studentsEnrolled) {
+			cout << student->Name() << endl;
+		}
+	}
+
+	string getCourseName() {
+		return courseName;
+	}
+
+
+	void setTeacher(Teacher* t) {
+		teacher = t;
+	}
 
 };
 
