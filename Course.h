@@ -1,44 +1,42 @@
 #pragma once
-#include<iostream>
-#include<string>
-#include"Student.h"
+#include <iostream>
+#include <string>
+#include <list>
+#include "Teacher.h"
+#include "Student.h"
 
-//class  Student;
+class Teacher; // Forward declaration
+class Student; // Forward declaration
 
-using namespace std;
+class Course {
+private:
+    int courseCode;
 
-class Course
-{
-	int courseCode;
 public:
-	string courseName;
-	Teacher* teacher;
-	list<Student*> studentsEnrolled;
+    std::string courseName;
+    Teacher* teacher;
+    std::list<Student*> studentsEnrolled;
 
+    void addStudent(Student* student) {
+        studentsEnrolled.push_back(student);
+    }
 
-	void addStudent(Student* student) {
-		studentsEnrolled.push_back(student);
-	}
+    void removeStudent(Student* student) {
+        studentsEnrolled.remove(student);
+    }
 
-	void removeStudent(Student* student) {
-		studentsEnrolled.push_back(student);
-	}
+    void viewStudents() const {
+        std::cout << "Students enrolled in " << courseName << ":" << std::endl;
+        for (const auto& student : studentsEnrolled) {
+            std::cout << student->Name() << std::endl;
+        }
+    }
 
-	void viewStudents() const {
-		cout << "Students enrolled in " << courseName << ":" << endl;
-		for (const auto& student : studentsEnrolled) {
-			cout << student->Name() << endl;
-		}
-	}
+    std::string getCourseName() const {
+        return courseName;
+    }
 
-	string getCourseName() {
-		return courseName;
-	}
-
-
-	void setTeacher(Teacher* t) {
-		teacher = t;
-	}
-
+    void setTeacher(Teacher* t) {
+        teacher = t;
+    }
 };
-
